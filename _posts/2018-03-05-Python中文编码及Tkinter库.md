@@ -6,6 +6,7 @@ author:     LELE
 header-img: img/post-bg-miui6.jpg
 catalog: true
 tags: Python Tkinter 
+Key: Python-encoding-Tkinter
 ---
 
 # Python编码问题

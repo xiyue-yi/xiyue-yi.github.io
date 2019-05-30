@@ -1,28 +1,28 @@
 ---
 layout:     article
-title:      Mac OS：Python-igraph & Cairo & Pycairo安装踩坑历程
+title: Mac OS：Python-igraph & Cairo & Pycairo安装踩坑历程
 date:       2019-02-20
 author:     LELE
 header-img: img/post-bg-miui6.jpg
 catalog: true
 tags: igraph cairo pycairo 可视化 社区发现 python
+Key: 2019-02-20-macos-python-igraph-cairo-pycairo
 ---
 
-### Mac OS：Python-igraph & Cairo & Pycairo安装踩坑历程
-
-### 在Mac OS X上使用igraph相关库作图可视化
+## 在Mac OS X上使用igraph相关库作图可视化
 
 昨天突然收到小伙伴作业里的一个需求，需要把作业里的一个图可视化，小伙伴提示说可以借助python里的igraph这个库实现，于是就开始尝试了一下。
+<!--more-->
 
-这个图应该是社区发现里比较经典的，大概形式如下图，使用的是https://blog.csdn.net/liuhuan323/article/details/78936781这个博客中提供的代码。不过在安装的过程中踩了一些坑，也没有找到太多汉化的教程，于是希望把这个过程记录一下。 这个过程仅基于Mac OS系统，其它系统应该也可以在相关网站找到教程。
+这个图应该是社区发现里比较经典的，大概形式如下图，使用的是[这个博客](https://blog.csdn.net/liuhuan323/article/details/78936781)中提供的代码。不过在安装的过程中踩了一些坑，也没有找到太多汉化的教程，于是希望把这个过程记录一下。 这个过程仅基于Mac OS系统，其它系统应该也可以在相关网站找到教程。
 
 ![Image](./img/dolphin.png)
 
-#### 踩坑过程
+### 踩坑过程
 
 这一部分说**错误**的安装方式，可以直接跳到**正确安装**的步骤查看。
 
-##### 1. 安装python-igraph
+### 1. 安装python-igraph
 python-igraph库的安装很简单，直接使用pip命令
 
    ```
@@ -31,11 +31,11 @@ python-igraph库的安装很简单，直接使用pip命令
 
 
 
-##### 2. 安装Cairo
+### 2. 安装Cairo
 
 要实现可视化，还需要借助Cairo库。在igraph的官方网站上（https://igraph.org/python/doc/tutorial/install.html#installing-igraph）给出了基于Mac OS的画图方法<u>Graph plotting in *igraph* on Mac OS X</u>，上面提到可以在Cairo的主页上找到安装方法，并说没有提供Mac OS的预编译安装软件，但可以借助MacPorts和Fink进行安装：
 
-   ##### 基于MacPorts
+   ### 基于MacPorts
 
    ```
    # 安装
@@ -142,7 +142,7 @@ python-igraph库的安装很简单，直接使用pip命令
 
    
 
-   ##### 基于Fink
+   #### 基于Fink
 
    ```
    sudo apt-get install cairo
@@ -152,7 +152,7 @@ python-igraph库的安装很简单，直接使用pip命令
 
    
 
-##### 3. 安装Pycairo 
+### 3. 安装Pycairo 
 到这里以为装完了Cairo，但是因为需要在python里调用，所以还需要Cairo的python绑定Pycairo。
 
 
@@ -240,9 +240,9 @@ No package 'cairo' found
 
 
 
-#### 正确步骤
+## 正确步骤
 
-##### 1. 安装python-igraph
+### 1. 安装python-igraph
 
 直接用pip命令安装
 
@@ -266,7 +266,7 @@ pip install python-igraph
 
 
 
-##### 2. 安装Cairo
+### 2. 安装Cairo
 
 要实现可视化，还需要借助Cairo库。
 
@@ -280,7 +280,7 @@ brew install cairo pkg-config
 
 
 
-##### 3. 安装Pycairo
+### 3. 安装Pycairo
 
 除了Cairo库之外，因为需要在python里调用，所以还需要Cairo的python绑定Pycairo。
 
@@ -296,21 +296,15 @@ pip3 install pycairo
 
 
 
-#### 参考资料
-igraph主页安装建议
-https://igraph.org/python/doc/tutorial/install.html#installing-igraph
+## 参考资料
+[igraph主页安装建议](https://igraph.org/python/doc/tutorial/install.html#installing-igraph)
 
-MacPorts主页port安装方法
-https://www.macports.org/install.php
+[MacPorts主页port安装方法](https://www.macports.org/install.php)
 
-cairo主页上的pycairo安装建议
-https://www.cairographics.org/pycairo/
+[cairo主页上的pycairo安装建议](https://www.cairographics.org/pycairo/)
 
-pycairo主页的安装建议
-https://pycairo.readthedocs.io/en/latest/getting_started.html
+[pycairo主页的安装建议](https://pycairo.readthedocs.io/en/latest/getting_started.html)
 
-作图代码来源
-https://blog.csdn.net/liuhuan323/article/details/78936781
+[作图代码来源](https://blog.csdn.net/liuhuan323/article/details/78936781)
 
-igraph主页作图教程
-https://igraph.org/python/doc/tutorial/tutorial.html
+[igraph主页作图教程](https://igraph.org/python/doc/tutorial/tutorial.html)
