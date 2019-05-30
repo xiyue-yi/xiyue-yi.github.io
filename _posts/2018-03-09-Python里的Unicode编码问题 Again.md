@@ -1,6 +1,6 @@
 ---
 layout:     article
-title:      （壹捌）三九
+title:      Python里的Unicode编码问题 Again
 date:       2018-03-09
 author:     LELE
 header-img: img/post-bg-miui6.jpg

@@ -1,6 +1,6 @@
 ---
 layout:     article
-title:      （壹玖）零贰贰零
+title:      Mac OS：Python-igraph & Cairo & Pycairo安装踩坑历程
 date:       2019-02-20
 author:     LELE
 header-img: img/post-bg-miui6.jpg
@@ -16,7 +16,7 @@ tags: igraph cairo pycairo 可视化 社区发现 python
 
 这个图应该是社区发现里比较经典的，大概形式如下图，使用的是https://blog.csdn.net/liuhuan323/article/details/78936781这个博客中提供的代码。不过在安装的过程中踩了一些坑，也没有找到太多汉化的教程，于是希望把这个过程记录一下。 这个过程仅基于Mac OS系统，其它系统应该也可以在相关网站找到教程。
 
-![](img/dolphin.png)
+![Image](./img/dolphin.png)
 
 #### 踩坑过程
 

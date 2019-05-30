@@ -1,6 +1,6 @@
 ---
 layout:     article
-title:      （壹捌）一零零八
+title:      Mac OS terminal中所有命令失效
 date:       2018-10-08
 author:     LELE
 header-img: img/post-bg-miui6.jpg
