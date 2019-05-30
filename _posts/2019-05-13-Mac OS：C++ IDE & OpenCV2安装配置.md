@@ -6,19 +6,20 @@ author:     LELE
 header-img: img/post-bg-miui6.jpg
 catalog: true
 tags: opencv2 clion macos c++
+key: 2019-05-13-Mac-OS-C++IDE-OpenCV2
 ---
-
-### Mac OS：C++ IDE & OpenCV2安装配置
 
 因为最近有一个作业需要跑c++程序，但是最近都用python比较多， mac上还没有配置过c++的环境，所以需要先配置一下IDE之类的。
 
-##### 1. 安装IDE——CLion
+<!--more-->
+
+## 1. 安装IDE——CLion
 
 win系统下支持C++的IDE还是挺丰富的，甚至有挺多轻量级的选择，但是对mac上的不是很了解，简单挑选了一些最后选定了CLion作为跑实验的IDE，实际使用体验也还不错，可能因为也是JetBrains的软件，很多使用习惯和PyCharm还挺像的，所以上手也比较容易。学生还可以用学生邮箱注册免费账号。
 
-##### 2. 安装Cmake
+## 2. 安装Cmake
 
-##### 3. 安装OpenCV2
+## 3. 安装OpenCV2
 
 在mac上安装OpenCV其实还是很简单的，借助homebrew工具只要一行命令即可；但是由于需要的依赖库比较多，所以安装时间会比较长。
 
@@ -86,7 +87,7 @@ Could not find module FindOpenCV.cmake or a configuration file for package
     opencv-config.cmake
 ```
 
-在stackoverflow上面搜到了相关的问题：https://stackoverflow.com/questions/8711109/could-not-find-module-findopencv-cmake-error-in-configuration-process，里面提供了挺多的方案，其实本质上就是说它没法按照缺省的设置找到OpenCV的相关文件'，需要手动配置一下，所以首先需要在自己的电脑上找到相关文件的路径位置：
+在[stackoverflow上面搜到了相关的问题](https://stackoverflow.com/questions/8711109/could-not-find-module-findopencv-cmake-error-in-configuration-process)，里面提供了挺多的方案，其实本质上就是说它没法按照缺省的设置找到OpenCV的相关文件'，需要手动配置一下，所以首先需要在自己的电脑上找到相关文件的路径位置：
 
 ```
 find / -name "OpenCVConfig.cmake"
@@ -106,7 +107,7 @@ set (OpenCV_DIR /home/cmake/opencv/compiled) #change the path to match your comp
 export OpenCV_DIR=<path_of_opencv>
 ```
 
-##### 4. CLion配置OpenCV环境
+## 4. CLion配置OpenCV环境
 
 在CLion中的CMakeLists.txt中配置如下：
 
@@ -125,7 +126,8 @@ add_executable(untitled1 main.cpp)
 target_link_libraries(untitled1 ${OpenCV_LIBS})
 ```
 
-可以像https://www.jianshu.com/p/b705d9eee23d中写一个简单的main.cpp进行验证：
+可以像[这篇简书的文章](https://www.jianshu.com/p/b705d9eee23d)中写一个简单的main.cpp进行验证：
+
 
 ```C++
 #include <iostream>
@@ -146,9 +148,7 @@ int main() {
 }
 ```
 
-#### 参考资料
-stackoverflow上关于无法找到opencv相关文件的问答
-https://stackoverflow.com/questions/8711109/could-not-find-module-findopencv-cmake-error-in-configuration-process
+## 参考资料
+[stackoverflow上关于无法找到opencv相关文件的问答](https://stackoverflow.com/questions/8711109/could-not-find-module-findopencv-cmake-error-in-configuration-process)
 
-Mac CLion配置OpenCV环境
-https://www.jianshu.com/p/b705d9eee23d
+[Mac CLion配置OpenCV环境](https://www.jianshu.com/p/b705d9eee23d)
