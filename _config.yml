@@ -20,9 +20,9 @@ text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 url     : # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : # does not include hostname
-title   : Your Site Title
+title   : LELE's BLOG
 description: > # this means to ignore newlines until "Language & timezone"
-  Your Site Description
+  Nonsense.
 
 
 ## => Language and Timezone
@@ -35,7 +35,7 @@ timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for
 ##############################
 author:
   type      : # "person" (default), "organization"
-  name      : Your Name
+  name      : lele
   url       :
   avatar    : # path or url of avatar image (square)
   bio       : I am an amazing person.
@@ -147,13 +147,12 @@ comments:
 ## => Pageview
 ##############################
 pageview:
-  provider: false # false (default), "leancloud", "custom"
-
+  provider: leancloud # false (default), "leancloud", "custom"
   ## Leancloud
   leancloud:
-    app_id    : # LeanCloud App id
-    app_key   : # LeanCloud App key
-    app_class : # LeanCloud App class
+    app_id    : 35xfeSlBx9p0FCwH0hrRE5H5-gzGzoHsz # LeanCloud App id
+    app_key   : g0atEytVKW9FFwC64p7BE1u8 # LeanCloud App key
+    app_class : Pageview # LeanCloud App class
 
 
 ## => Search
