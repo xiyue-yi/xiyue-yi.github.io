@@ -150,7 +150,7 @@ pageview:
   provider: leancloud # false (default), "leancloud", "custom"
   ## Leancloud
   leancloud:
-    app_id    : 35xfeSlBx9p0FCwH0hrRE5H5-gzGzoHsz # LeanCloud App id
+    app_id    : 35xfeSlBX9p0FCwH0hrRE5H5-gzGzoHsz # LeanCloud App id
     app_key   : g0atEytVKW9FFwC64p7BE1u8 # LeanCloud App key
     app_class : Pageview # LeanCloud App class
 
