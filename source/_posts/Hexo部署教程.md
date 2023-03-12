@@ -1,7 +1,7 @@
 ---
 title: Hexo部署踩坑教程 & Hexo如何仅通过修改_posts更新网页
 date: 2023-03-11 23:02:49
-index_img: /img/白鹤梁.jpeg
+index_img: /img/一梦江湖.jpeg
 tags: 
 - Hexo
 - GitHub-pages
