@@ -1,19 +1,21 @@
 ---
 title: Hexo部署踩坑教程 & Hexo如何仅通过修改_posts更新网页
 date: 2023-03-11 23:02:49
-tags:
+index_img: /img/白鹤梁.jpeg
+tags: 
+- Hexo
+- GitHub-pages
 ---
 
 
 
 最近接触Hexo搭建Github Pages的内容，在部署的过程中遇到了一些坑点，记录并分享出来。
 
+{% note success %}
+**【划重点】主要坑点：拷贝theme仓库之后产生的子模块冲突问题、源代码和静态文件存储不同分支的冲突问题。** 
+{% endnote %}
 
-_________________________________________________________________________________________________
-#### 【划重点】主要坑点：拷贝theme仓库之后产生的子模块冲突问题、源代码和静态文件存储不同分支的冲突问题
-_________________________________________________________________________________________________
-
-
+<!-- more -->
 
 ### 远程仓库创建
 
@@ -131,10 +133,10 @@ $ npm install hexo-deployer-git --save
 
 ```yaml
 deploy:
-type: git
-repo: https://github.com/<username>/<project>
-# example, https://github.com/hexojs/hexojs.github.io
-branch: gh-pages
+	type: git
+	repo: https://github.com/<username>/<project>
+	# example, https://github.com/hexojs/hexojs.github.io
+	branch: gh-pages
 ```
 
 其中，`repo`是所要上传的GitHub Repo名，即 ***username*\.github.io**，`branch`是远程Repo中的对应分支，这里命名为`gh-pages`；即部署生成的静态文件到远程仓库的**gh-pages**分支。
@@ -190,42 +192,42 @@ Hexo官网中提供了使用Git Actions进行部署的[教程](https://hexo.io/z
 name: Pages
 
 on:
-push:
-branches:
-- hexo # default branch 修改为使用的分支名
+	push:
+		branches:
+			- hexo # default branch 修改为使用的分支名
 
 jobs:
-pages:
-runs-on: ubuntu-latest
-permissions:
-contents: write
-steps:
-# 将源码clone到运行环境中
-- uses: actions/checkout@v2
-with:
-submodules: 'true' # 这里因为使用了子模块，设置为true
-# 配置Node.js环境
-- name: Use Node.js 16.x
-uses: actions/setup-node@v2
-with:
-node-version: "16" # 这里需要修改为对应的Node.js版本
-- name: Cache NPM dependencies
-uses: actions/cache@v2
-with:
-path: node_modules
-key: ${{ runner.OS }}-npm-cache
-restore-keys: |
-${{ runner.OS }}-npm-cache
-# 安装依赖环境
-- name: Install Dependencies
-run: npm install
-- name: Build
-run: npm run build
-- name: Deploy
-uses: peaceiris/actions-gh-pages@v3
-with:
-github_token: ${{ secrets.GITHUB_TOKEN }}
-publish_dir: ./public
+	pages:
+		runs-on: ubuntu-latest
+		permissions:
+			contents: write
+		steps:
+			# 将源码clone到运行环境中
+			- uses: actions/checkout@v2
+				with:
+					submodules: 'true' # 这里因为使用了子模块，设置为true
+			# 配置Node.js环境
+			- name: Use Node.js 16.x
+				uses: actions/setup-node@v2
+				with:
+					node-version: "16" # 这里需要修改为对应的Node.js版本
+			- name: Cache NPM dependencies
+				uses: actions/cache@v2
+				with:
+					path: node_modules
+					key: ${{ runner.OS }}-npm-cache
+					restore-keys: |
+						${{ runner.OS }}-npm-cache
+			# 安装依赖环境
+			- name: Install Dependencies
+				run: npm install
+			- name: Build
+				run: npm run build
+			- name: Deploy
+				uses: peaceiris/actions-gh-pages@v3
+				with:
+					github_token: ${{ secrets.GITHUB_TOKEN }}
+					publish_dir: ./public
 ```
 
 3. 修改完成workflow文件之后，提交一下代码：
