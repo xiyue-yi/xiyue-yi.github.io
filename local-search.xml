@@ -4,19 +4,6 @@
   
   
   <entry>
-    <title>PGU库的安装</title>
-    <link href="/2023/03/12/2018-01-29-PGU%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85/"/>
-    <url>/2023/03/12/2018-01-29-PGU%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85/</url>
-    
-    <content type="html"><![CDATA[<p>今天在试跑代码的时候，需要用到python里面的一个库PGU，</p><span id="more"></span><p>但是用pip install命令安装的时候，出现报错</p><pre><code class="hljs">Could not find a version that satisfies the requirement PGU (from version: )No matching distribution found for PGU.</code></pre><p>开始想过会不会是Python2.7不支持PGU库，最后直接从Google Code中下载到了安装包，安装包中有setup.py文件，执行</p><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">python</span> setup.<span class="hljs-keyword">py</span> install<br></code></pre></td></tr></table></figure><p>即可成功安装，安装之后测试成功。</p><p>Google的下载地址为 <a href="https://code.google.com/archive/p/pgu/downloads">https://code.google.com/archive/p/pgu/downloads</a> ，最新版已经更新至0.18</p><p>PGU全称为Phil’s Pygame Utilities，它包含的功能有GUI，html渲染（可嵌入html代码），文档输出，文本渲染等，可以用来画一些窗口。</p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Hexo部署踩坑教程 &amp; Hexo如何仅通过修改_posts更新网页</title>
     <link href="/2023/03/11/Hexo%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/"/>
     <url>/2023/03/11/Hexo%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/</url>
@@ -187,6 +174,19 @@
       <tag>Tkinter</tag>
       
     </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>PGU库的安装</title>
+    <link href="/2018/01/29/2018-01-29-PGU%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85/"/>
+    <url>/2018/01/29/2018-01-29-PGU%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85/</url>
+    
+    <content type="html"><![CDATA[<p>今天在试跑代码的时候，需要用到python里面的一个库PGU，</p><span id="more"></span><p>但是用pip install命令安装的时候，出现报错</p><pre><code class="hljs">Could not find a version that satisfies the requirement PGU (from version: )No matching distribution found for PGU.</code></pre><p>开始想过会不会是Python2.7不支持PGU库，最后直接从Google Code中下载到了安装包，安装包中有setup.py文件，执行</p><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">python</span> setup.<span class="hljs-keyword">py</span> install<br></code></pre></td></tr></table></figure><p>即可成功安装，安装之后测试成功。</p><p>Google的下载地址为 <a href="https://code.google.com/archive/p/pgu/downloads">https://code.google.com/archive/p/pgu/downloads</a> ，最新版已经更新至0.18</p><p>PGU全称为Phil’s Pygame Utilities，它包含的功能有GUI，html渲染（可嵌入html代码），文档输出，文本渲染等，可以用来画一些窗口。</p>]]></content>
+    
+    
     
   </entry>
   
