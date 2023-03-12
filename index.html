@@ -17,16 +17,18 @@
   <meta name="keywords" content="">
   
     <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="LELE BLOG">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="LELE BLOG">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
-  <title>Hexo</title>
+  
+  <title>LELE BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -58,7 +60,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":"G-ZN7YT5MS10","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -68,6 +70,33 @@
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
   
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('https://www.google-analytics.com/analytics.js', function() {
+          window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) };
+          ga.l = +new Date;
+          ga('create', 'G-ZN7YT5MS10', 'auto');
+          ga('send', 'pageview');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 
 
   
@@ -84,7 +113,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>LELE BLOG</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -224,15 +253,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/03/12/hello-world/" target="_self">
-          Hello World
+        <a href="/2023/03/12/2018-01-29-PGU%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85/" target="_self">
+          PGU库的安装
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/12/hello-world/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/12/2018-01-29-PGU%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85/" target="_self">
         <div>
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick
+          今天在试跑代码的时候，需要用到python里面的一个库PGU，
         </div>
       </a>
 
@@ -240,7 +269,7 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-03-12 07:04" pubdate>
+            <time datetime="2023-03-12 08:24" pubdate>
               2023-03-12
             </time>
           </div>
@@ -254,7 +283,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/11/Hexo%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/" target="_self">
+          <img src="/img/%E7%99%BD%E9%B9%A4%E6%A2%81.jpeg" srcset="/img/loading.gif" lazyload alt="Hexo部署踩坑教程 &amp; Hexo如何仅通过修改_posts更新网页">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/03/11/Hexo%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/" target="_self">
@@ -263,9 +298,9 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/11/Hexo%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/" target="_self">
+      <a class="index-excerpt " href="/2023/03/11/Hexo%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/" target="_self">
         <div>
-          最近接触Hexo搭建Github Pages的内容，在部署的过程中遇到了一些坑点，记录并分享出来。  【划重点】主要坑点：拷贝theme仓库之后产生的子模块冲突问题、源代码和静态文件存储不同分支的冲突问题 远程仓库创建在GitHub上新建名为 username.github.io 的Repo，username 是你在 GitHub 上的用户名。 Hexo安装Hexo的安装需要基于Node.js和G
+          最近接触Hexo搭建Github Pages的内容，在部署的过程中遇到了一些坑点，记录并分享出来。              【划重点】主要坑点：拷贝theme仓库之后产生的子模块冲突问题、源代码和静态文件存储不同分支的冲突问题。
         </div>
       </a>
 
@@ -279,6 +314,317 @@
           </div>
         
         
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Hexo/">#Hexo</a>
+            
+              <a href="/tags/GitHub-pages/">#GitHub-pages</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/05/13/2019-05-13-Mac%20OS%EF%BC%9AC++%20IDE%20&amp;%20OpenCV2%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" target="_self">
+          Mac OS：C++ IDE &amp; OpenCV2安装配置
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2019/05/13/2019-05-13-Mac%20OS%EF%BC%9AC++%20IDE%20&amp;%20OpenCV2%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" target="_self">
+        <div>
+          因为最近有一个作业需要跑c++程序，但是最近都用python比较多， mac上还没有配置过c++的环境，所以需要先配置一下IDE之类的。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-05-13 00:00" pubdate>
+              2019-05-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/opencv2/">#opencv2</a>
+            
+              <a href="/tags/clion/">#clion</a>
+            
+              <a href="/tags/macos/">#macos</a>
+            
+              <a href="/tags/c/">#c++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/02/20/2019-02-20-Mac%20OS%EF%BC%9APython-igraph%20&amp;%20Cairo%20&amp;%20Pycairo%E5%AE%89%E8%A3%85%E8%B8%A9%E5%9D%91%E5%8E%86%E7%A8%8B/" target="_self">
+          Mac OS：Python-igraph &amp; Cairo &amp; Pycairo安装踩坑历程
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2019/02/20/2019-02-20-Mac%20OS%EF%BC%9APython-igraph%20&amp;%20Cairo%20&amp;%20Pycairo%E5%AE%89%E8%A3%85%E8%B8%A9%E5%9D%91%E5%8E%86%E7%A8%8B/" target="_self">
+        <div>
+          在Mac OS X上使用igraph相关库作图可视化昨天突然收到小伙伴作业里的一个需求，需要把作业里的一个图可视化，小伙伴提示说可以借助python里的igraph这个库实现，于是就开始尝试了一下。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-02-20 00:00" pubdate>
+              2019-02-20
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/igraph/">#igraph</a>
+            
+              <a href="/tags/cairo/">#cairo</a>
+            
+              <a href="/tags/pycairo/">#pycairo</a>
+            
+              <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">#可视化</a>
+            
+              <a href="/tags/%E7%A4%BE%E5%8C%BA%E5%8F%91%E7%8E%B0/">#社区发现</a>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2018/10/29/2018-10-29-%E5%8D%95%E6%9C%BA%EF%BC%88%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%EF%BC%89Hadoop%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E8%B8%A9%E5%9D%91%E5%8E%86%E7%A8%8B/" target="_self">
+          单机（伪分布式）Hadoop系统安装踩坑历程
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2018/10/29/2018-10-29-%E5%8D%95%E6%9C%BA%EF%BC%88%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%EF%BC%89Hadoop%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E8%B8%A9%E5%9D%91%E5%8E%86%E7%A8%8B/" target="_self">
+        <div>
+          在做作业的时候需要配置Hadoop单机系统环境，但是课程的PPT里各种坑，在这里记录下一些踩坑过程。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-10-29 00:00" pubdate>
+              2018-10-29
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Hadoop-MapReduce-Linux/">#Hadoop MapReduce Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2018/10/08/2018-10-08-Mac%20OS%20terminal%E4%B8%AD%E6%89%80%E6%9C%89%E5%91%BD%E4%BB%A4%E5%A4%B1%E6%95%88/" target="_self">
+          Mac OS terminal中所有命令失效
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2018/10/08/2018-10-08-Mac%20OS%20terminal%E4%B8%AD%E6%89%80%E6%9C%89%E5%91%BD%E4%BB%A4%E5%A4%B1%E6%95%88/" target="_self">
+        <div>
+          今天在修改系统变量的时候遇到了键盘大小写切换失败的问题，百度结果大部分建议重启系统，当时比较着急就直接退出了vim关机，没有检查.bash_profile是否修改完备；重新开机之后发现使用很多命令的结果都是Command not FOUND,包括了sudo、vim这些常见命令。百度之后发现相关解决方式并不多，看到了一篇CSDN博客给出了相应的解决办法，在这里记录一下。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-10-08 00:00" pubdate>
+              2018-10-08
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%B8%80%E6%97%A5%E4%B8%80%E8%AE%B0/">#一日一记</a>
+            
+              <a href="/tags/MacOS/">#MacOS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2018/03/09/2018-03-09-Python%E9%87%8C%E7%9A%84Unicode%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98%20Again/" target="_self">
+          Python里的Unicode编码问题 Again
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2018/03/09/2018-03-09-Python%E9%87%8C%E7%9A%84Unicode%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98%20Again/" target="_self">
+        <div>
+          Python里的编码问题一开始碰到其实是在一年前，当时想要爬取网上的内容，但是爬下来的东西很多时候会出现乱码；但是当时时间比较紧张，没有仔细再去理解里面的原因；这几天跑代码的时候又遇到了，所以就仔细查了一些资料。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-03-09 00:00" pubdate>
+              2018-03-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">#Python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2018/03/07/2018-03-07-Python%E9%87%8C%E7%9A%84%E7%BC%96%E7%A0%81%E4%B8%8E%E8%A7%A3%E7%A0%81/" target="_self">
+          Python里的编码与解码
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2018/03/07/2018-03-07-Python%E9%87%8C%E7%9A%84%E7%BC%96%E7%A0%81%E4%B8%8E%E8%A7%A3%E7%A0%81/" target="_self">
+        <div>
+          UnicodeDecodeError: &#39;ascii&#39; codec can&#39;t decode byte 0xe5 in position 4: ordinal not in range  Python 默认脚本文件都是 UTF-8 编码的，当文件中有非 UTF-8 编码范围内的字符的时候就要使用”编码指示”来修正. 关于 sys.defaultencoding，这个在解码没
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-03-07 00:00" pubdate>
+              2018-03-07
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">#Python</a>
+            
+              <a href="/tags/%E4%B8%80%E6%97%A5%E4%B8%80%E8%AE%B0/">#一日一记</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2018/03/05/2018-03-05-Python%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81%E5%8F%8ATkinter%E5%BA%93/" target="_self">
+          Python中文编码及Tkinter库
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2018/03/05/2018-03-05-Python%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81%E5%8F%8ATkinter%E5%BA%93/" target="_self">
+        <div>
+          Python编码问题SyntaxError: Non-ASCII character &#39;\xe5&#39; in file ABC.py on line 24, but no encoding declared; see http://python.org/dev/peps/pep-         0263/   for details
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-03-05 00:00" pubdate>
+              2018-03-05
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">#Python</a>
+            
+              <a href="/tags/Tkinter/">#Tkinter</a>
+            
+          </div>
         
       </div>
     </article>
@@ -336,6 +682,30 @@
     </div>
   
   
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
   
   
 </div>
@@ -388,6 +758,8 @@
 
 
   <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 

@@ -16,21 +16,27 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="最近接触Hexo搭建Github Pages的内容，在部署的过程中遇到了一些坑点，记录并分享出来。  【划重点】主要坑点：拷贝theme仓库之后产生的子模块冲突问题、源代码和静态文件存储不同分支的冲突问题 远程仓库创建在GitHub上新建名为 username.github.io 的Repo，username 是你在 GitHub 上的用户名。 Hexo安装Hexo的安装需要基于Node.js和G">
+    <meta name="description" content="最近接触Hexo搭建Github Pages的内容，在部署的过程中遇到了一些坑点，记录并分享出来。              【划重点】主要坑点：拷贝theme仓库之后产生的子模块冲突问题、源代码和静态文件存储不同分支的冲突问题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo部署踩坑教程 &amp; Hexo如何仅通过修改_posts更新网页">
 <meta property="og:url" content="http://example.com/2023/03/11/Hexo%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="最近接触Hexo搭建Github Pages的内容，在部署的过程中遇到了一些坑点，记录并分享出来。  【划重点】主要坑点：拷贝theme仓库之后产生的子模块冲突问题、源代码和静态文件存储不同分支的冲突问题 远程仓库创建在GitHub上新建名为 username.github.io 的Repo，username 是你在 GitHub 上的用户名。 Hexo安装Hexo的安装需要基于Node.js和G">
+<meta property="og:site_name" content="LELE BLOG">
+<meta property="og:description" content="最近接触Hexo搭建Github Pages的内容，在部署的过程中遇到了一些坑点，记录并分享出来。              【划重点】主要坑点：拷贝theme仓库之后产生的子模块冲突问题、源代码和静态文件存储不同分支的冲突问题。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/%E7%99%BD%E9%B9%A4%E6%A2%81.jpeg">
 <meta property="article:published_time" content="2023-03-11T23:02:49.000Z">
-<meta property="article:modified_time" content="2023-03-12T07:04:49.147Z">
+<meta property="article:modified_time" content="2023-03-12T08:24:02.371Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="GitHub-pages">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/%E7%99%BD%E9%B9%A4%E6%A2%81.jpeg">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
-  <title>Hexo部署踩坑教程 &amp; Hexo如何仅通过修改_posts更新网页 - Hexo</title>
+  
+  <title>Hexo部署踩坑教程 &amp; Hexo如何仅通过修改_posts更新网页 - LELE BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -68,7 +74,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":"G-ZN7YT5MS10","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -78,6 +84,33 @@
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
   
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('https://www.google-analytics.com/analytics.js', function() {
+          window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) };
+          ga.l = +new Date;
+          ga('create', 'G-ZN7YT5MS10', 'auto');
+          ga('send', 'pageview');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 
 
   
@@ -94,7 +127,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>LELE BLOG</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -274,8 +307,12 @@
               <div class="markdown-body">
                 
                 <p>最近接触Hexo搭建Github Pages的内容，在部署的过程中遇到了一些坑点，记录并分享出来。</p>
-<hr>
-<h4 id="【划重点】主要坑点：拷贝theme仓库之后产生的子模块冲突问题、源代码和静态文件存储不同分支的冲突问题"><a href="#【划重点】主要坑点：拷贝theme仓库之后产生的子模块冲突问题、源代码和静态文件存储不同分支的冲突问题" class="headerlink" title="【划重点】主要坑点：拷贝theme仓库之后产生的子模块冲突问题、源代码和静态文件存储不同分支的冲突问题"></a>【划重点】主要坑点：拷贝theme仓库之后产生的子模块冲突问题、源代码和静态文件存储不同分支的冲突问题</h4><hr>
+<div class="note note-success">
+            <p><strong>【划重点】主要坑点：拷贝theme仓库之后产生的子模块冲突问题、源代码和静态文件存储不同分支的冲突问题。</strong> </p>
+          </div>
+
+<span id="more"></span>
+
 <h3 id="远程仓库创建"><a href="#远程仓库创建" class="headerlink" title="远程仓库创建"></a>远程仓库创建</h3><p>在GitHub上新建名为 <strong><em>username</em>.github.io</strong> 的Repo，<code>username</code> 是你在 GitHub 上的用户名。</p>
 <h3 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h3><p>Hexo的安装需要基于Node.js和Git程序，具体的安装过程见Hexo官网的详细说明：</p>
 <p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">安装|Hexo</a></p>
@@ -335,7 +372,7 @@
 <ol start="2">
 <li>在<code>_config.yml</code>中添加以下配置：</li>
 </ol>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span><br><span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br><span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/&lt;username&gt;/&lt;project&gt;</span><br><span class="hljs-comment"># example, https://github.com/hexojs/hexojs.github.io</span><br><span class="hljs-attr">branch:</span> <span class="hljs-string">gh-pages</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span><br>	<span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>	<span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/&lt;username&gt;/&lt;project&gt;</span><br>	<span class="hljs-comment"># example, https://github.com/hexojs/hexojs.github.io</span><br>	<span class="hljs-attr">branch:</span> <span class="hljs-string">gh-pages</span><br></code></pre></td></tr></table></figure>
 
 <p>其中，<code>repo</code>是所要上传的GitHub Repo名，即 <strong><em>username</em>.github.io</strong>，<code>branch</code>是远程Repo中的对应分支，这里命名为<code>gh-pages</code>；即部署生成的静态文件到远程仓库的<strong>gh-pages</strong>分支。</p>
 <ol start="3">
@@ -358,7 +395,7 @@
 <li>使用<code>node --version</code>指令检查本地的Node.js版本并记录。</li>
 <li>在本地仓库中建立<code>.github/workflows/pages.yml</code>，并填入以下内容，相比官网教程有所修改，相关说明见代码中的注释部分：</li>
 </ol>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># .github/workflows/pages.yml</span><br><span class="hljs-attr">name:</span> <span class="hljs-string">Pages</span><br><br><span class="hljs-attr">on:</span><br><span class="hljs-attr">push:</span><br><span class="hljs-attr">branches:</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">hexo</span> <span class="hljs-comment"># default branch 修改为使用的分支名</span><br><br><span class="hljs-attr">jobs:</span><br><span class="hljs-attr">pages:</span><br><span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br><span class="hljs-attr">permissions:</span><br><span class="hljs-attr">contents:</span> <span class="hljs-string">write</span><br><span class="hljs-attr">steps:</span><br><span class="hljs-comment"># 将源码clone到运行环境中</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v2</span><br><span class="hljs-attr">with:</span><br><span class="hljs-attr">submodules:</span> <span class="hljs-string">&#x27;true&#x27;</span> <span class="hljs-comment"># 这里因为使用了子模块，设置为true</span><br><span class="hljs-comment"># 配置Node.js环境</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Use</span> <span class="hljs-string">Node.js</span> <span class="hljs-number">16.</span><span class="hljs-string">x</span><br><span class="hljs-attr">uses:</span> <span class="hljs-string">actions/setup-node@v2</span><br><span class="hljs-attr">with:</span><br><span class="hljs-attr">node-version:</span> <span class="hljs-string">&quot;16&quot;</span> <span class="hljs-comment"># 这里需要修改为对应的Node.js版本</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Cache</span> <span class="hljs-string">NPM</span> <span class="hljs-string">dependencies</span><br><span class="hljs-attr">uses:</span> <span class="hljs-string">actions/cache@v2</span><br><span class="hljs-attr">with:</span><br><span class="hljs-attr">path:</span> <span class="hljs-string">node_modules</span><br><span class="hljs-attr">key:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">runner.OS</span> <span class="hljs-string">&#125;&#125;-npm-cache</span><br><span class="hljs-attr">restore-keys:</span> <span class="hljs-string">|</span><br><span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">runner.OS</span> <span class="hljs-string">&#125;&#125;-npm-cache</span><br><span class="hljs-comment"># 安装依赖环境</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">Dependencies</span><br><span class="hljs-attr">run:</span> <span class="hljs-string">npm</span> <span class="hljs-string">install</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Build</span><br><span class="hljs-attr">run:</span> <span class="hljs-string">npm</span> <span class="hljs-string">run</span> <span class="hljs-string">build</span><br><span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span><br><span class="hljs-attr">uses:</span> <span class="hljs-string">peaceiris/actions-gh-pages@v3</span><br><span class="hljs-attr">with:</span><br><span class="hljs-attr">github_token:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.GITHUB_TOKEN</span> <span class="hljs-string">&#125;&#125;</span><br><span class="hljs-attr">publish_dir:</span> <span class="hljs-string">./public</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># .github/workflows/pages.yml</span><br><span class="hljs-attr">name:</span> <span class="hljs-string">Pages</span><br><br><span class="hljs-attr">on:</span><br>	<span class="hljs-attr">push:</span><br>		<span class="hljs-attr">branches:</span><br>			<span class="hljs-bullet">-</span> <span class="hljs-string">hexo</span> <span class="hljs-comment"># default branch 修改为使用的分支名</span><br><br><span class="hljs-attr">jobs:</span><br>	<span class="hljs-attr">pages:</span><br>		<span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br>		<span class="hljs-attr">permissions:</span><br>			<span class="hljs-attr">contents:</span> <span class="hljs-string">write</span><br>		<span class="hljs-attr">steps:</span><br>			<span class="hljs-comment"># 将源码clone到运行环境中</span><br>			<span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v2</span><br>				<span class="hljs-attr">with:</span><br>					<span class="hljs-attr">submodules:</span> <span class="hljs-string">&#x27;true&#x27;</span> <span class="hljs-comment"># 这里因为使用了子模块，设置为true</span><br>			<span class="hljs-comment"># 配置Node.js环境</span><br>			<span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Use</span> <span class="hljs-string">Node.js</span> <span class="hljs-number">16.</span><span class="hljs-string">x</span><br>				<span class="hljs-attr">uses:</span> <span class="hljs-string">actions/setup-node@v2</span><br>				<span class="hljs-attr">with:</span><br>					<span class="hljs-attr">node-version:</span> <span class="hljs-string">&quot;16&quot;</span> <span class="hljs-comment"># 这里需要修改为对应的Node.js版本</span><br>			<span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Cache</span> <span class="hljs-string">NPM</span> <span class="hljs-string">dependencies</span><br>				<span class="hljs-attr">uses:</span> <span class="hljs-string">actions/cache@v2</span><br>				<span class="hljs-attr">with:</span><br>					<span class="hljs-attr">path:</span> <span class="hljs-string">node_modules</span><br>					<span class="hljs-attr">key:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">runner.OS</span> <span class="hljs-string">&#125;&#125;-npm-cache</span><br>					<span class="hljs-attr">restore-keys:</span> <span class="hljs-string">|</span><br>						<span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">runner.OS</span> <span class="hljs-string">&#125;&#125;-npm-cache</span><br>			<span class="hljs-comment"># 安装依赖环境</span><br>			<span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">Dependencies</span><br>				<span class="hljs-attr">run:</span> <span class="hljs-string">npm</span> <span class="hljs-string">install</span><br>			<span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Build</span><br>				<span class="hljs-attr">run:</span> <span class="hljs-string">npm</span> <span class="hljs-string">run</span> <span class="hljs-string">build</span><br>			<span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span><br>				<span class="hljs-attr">uses:</span> <span class="hljs-string">peaceiris/actions-gh-pages@v3</span><br>				<span class="hljs-attr">with:</span><br>					<span class="hljs-attr">github_token:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.GITHUB_TOKEN</span> <span class="hljs-string">&#125;&#125;</span><br>					<span class="hljs-attr">publish_dir:</span> <span class="hljs-string">./public</span><br></code></pre></td></tr></table></figure>
 
 <ol start="3">
 <li>修改完成workflow文件之后，提交一下代码：</li>
@@ -402,6 +439,15 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Hexo/">#Hexo</a>
+      
+        <a href="/tags/GitHub-pages/">#GitHub-pages</a>
+      
+    </div>
   
 </div>
 
@@ -456,15 +502,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/12/hello-world/" title="Hello World">
+                      <a href="/2023/03/12/2018-01-29-PGU%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85/" title="PGU库的安装">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hello World</span>
+                        <span class="hidden-mobile">PGU库的安装</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2019/05/13/2019-05-13-Mac%20OS%EF%BC%9AC++%20IDE%20&amp;%20OpenCV2%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" title="Mac OS：C++ IDE &amp; OpenCV2安装配置">
+                        <span class="hidden-mobile">Mac OS：C++ IDE &amp; OpenCV2安装配置</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
@@ -567,6 +619,30 @@
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
   
   
   
@@ -713,6 +789,8 @@
   <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 

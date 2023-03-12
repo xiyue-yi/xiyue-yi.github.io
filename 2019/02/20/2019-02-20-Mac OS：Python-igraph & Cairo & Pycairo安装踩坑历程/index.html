@@ -1,0 +1,777 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LELE">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在Mac OS X上使用igraph相关库作图可视化昨天突然收到小伙伴作业里的一个需求，需要把作业里的一个图可视化，小伙伴提示说可以借助python里的igraph这个库实现，于是就开始尝试了一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac OS：Python-igraph &amp; Cairo &amp; Pycairo安装踩坑历程">
+<meta property="og:url" content="http://example.com/2019/02/20/2019-02-20-Mac%20OS%EF%BC%9APython-igraph%20&%20Cairo%20&%20Pycairo%E5%AE%89%E8%A3%85%E8%B8%A9%E5%9D%91%E5%8E%86%E7%A8%8B/index.html">
+<meta property="og:site_name" content="LELE BLOG">
+<meta property="og:description" content="在Mac OS X上使用igraph相关库作图可视化昨天突然收到小伙伴作业里的一个需求，需要把作业里的一个图可视化，小伙伴提示说可以借助python里的igraph这个库实现，于是就开始尝试了一下。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/dolphin.png">
+<meta property="article:published_time" content="2019-02-20T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-12T08:24:02.371Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="igraph">
+<meta property="article:tag" content="cairo">
+<meta property="article:tag" content="pycairo">
+<meta property="article:tag" content="可视化">
+<meta property="article:tag" content="社区发现">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/dolphin.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Mac OS：Python-igraph &amp; Cairo &amp; Pycairo安装踩坑历程 - LELE BLOG</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":"G-ZN7YT5MS10","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('https://www.google-analytics.com/analytics.js', function() {
+          window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) };
+          ga.l = +new Date;
+          ga('create', 'G-ZN7YT5MS10', 'auto');
+          ga('send', 'pageview');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LELE BLOG</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Mac OS：Python-igraph &amp; Cairo &amp; Pycairo安装踩坑历程"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-02-20 00:00" pubdate>
+          2019年2月20日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          38 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Mac OS：Python-igraph &amp; Cairo &amp; Pycairo安装踩坑历程</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="在Mac-OS-X上使用igraph相关库作图可视化"><a href="#在Mac-OS-X上使用igraph相关库作图可视化" class="headerlink" title="在Mac OS X上使用igraph相关库作图可视化"></a>在Mac OS X上使用igraph相关库作图可视化</h2><p>昨天突然收到小伙伴作业里的一个需求，需要把作业里的一个图可视化，小伙伴提示说可以借助python里的igraph这个库实现，于是就开始尝试了一下。</p>
+<span id="more"></span>
+
+<p>这个图应该是社区发现里比较经典的，大概形式如下图，使用的是<a target="_blank" rel="noopener" href="https://blog.csdn.net/liuhuan323/article/details/78936781">这个博客</a>中提供的代码。不过在安装的过程中踩了一些坑，也没有找到太多汉化的教程，于是希望把这个过程记录一下。 这个过程仅基于Mac OS系统，其它系统应该也可以在相关网站找到教程。</p>
+<p><img src="/./img/dolphin.png" srcset="/img/loading.gif" lazyload alt="Image"></p>
+<h3 id="踩坑过程"><a href="#踩坑过程" class="headerlink" title="踩坑过程"></a>踩坑过程</h3><p>这一部分说<strong>错误</strong>的安装方式，可以直接跳到<strong>正确安装</strong>的步骤查看。</p>
+<h3 id="1-安装python-igraph"><a href="#1-安装python-igraph" class="headerlink" title="1. 安装python-igraph"></a>1. 安装python-igraph</h3><p>python-igraph库的安装很简单，直接使用pip命令</p>
+   <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> python-igraph<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-安装Cairo"><a href="#2-安装Cairo" class="headerlink" title="2. 安装Cairo"></a>2. 安装Cairo</h3><p>要实现可视化，还需要借助Cairo库。在igraph的官方网站上（<a target="_blank" rel="noopener" href="https://igraph.org/python/doc/tutorial/install.html#installing-igraph%EF%BC%89%E7%BB%99%E5%87%BA%E4%BA%86%E5%9F%BA%E4%BA%8EMac">https://igraph.org/python/doc/tutorial/install.html#installing-igraph）给出了基于Mac</a> OS的画图方法<u>Graph plotting in <em>igraph</em> on Mac OS X</u>，上面提到可以在Cairo的主页上找到安装方法，并说没有提供Mac OS的预编译安装软件，但可以借助MacPorts和Fink进行安装：</p>
+<h3 id="基于MacPorts"><a href="#基于MacPorts" class="headerlink" title="基于MacPorts"></a>基于MacPorts</h3>   <figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs pf"><span class="hljs-comment"># 安装</span><br>sudo <span class="hljs-keyword">port</span> install cairo<br><span class="hljs-comment"># 升级</span><br>sudo <span class="hljs-keyword">port</span> upgrade cairo<br></code></pre></td></tr></table></figure>
+
+<p>   但是因为电脑上没有安装MacPorts，所以首先还要进行MacPorts的安装，直接在MacPorts主页上（<a target="_blank" rel="noopener" href="https://www.macports.org/install.php%EF%BC%89%E6%A0%B9%E6%8D%AE%E7%B3%BB%E7%BB%9F%E7%89%88%E6%9C%AC%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E5%8C%85%EF%BC%8C%E5%92%8C%E4%B8%80%E8%88%AC%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E4%B8%80%E6%A0%B7%E4%BD%BF%E7%94%A8Mac">https://www.macports.org/install.php）根据系统版本下载安装包，和一般软件的安装过程一样使用Mac</a> OS X Package Installer，这样会自动安装到默认路径。在安装的过程中可能会卡顿比较长的时间，虽然只有十几M但是安装了可能有一两个小时之久。（一开始以为安装包有问题还重启了一次，其实没有必要等着就好）</p>
+<p>   安装完之后尝试使用port指令安装cairo，但是出现了报错：</p>
+   <figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs subunit"><span class="hljs-keyword">Error: </span>Port cairo not found<br></code></pre></td></tr></table></figure>
+
+<p>   搜索了一下发现很多是环境变量设置的问题，说要修改~&#x2F;.bash_profile文件，添加相关路径，但是修改之后发现也没有用仍然报错，后来就随便试了一下更新了一下port：</p>
+   <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">sudo port -v selfupdate</span><br></code></pre></td></tr></table></figure>
+
+<p>   更新完之后居然就好了，然后就正常安装，安装cairo的时候还需要先安装一系列依赖，反正又更了很长时间：</p>
+   <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">The following dependencies will <span class="hljs-keyword">be </span><span class="hljs-keyword">installed: </span><br><br> <span class="hljs-keyword">bzip2</span><br><span class="hljs-keyword"></span><br> db48<br><br> expat<br><br> fontconfig<br><br> freetype<br><br> gdbm<br><br> gettext<br><br> glib2<br><br> icu<br><br> libedit<br><br> libffi<br><br> libiconv<br><br> libpixman<br><br> libpng<br><br> libxml2<br><br> ncurses<br><br> openssl<br><br> ossp-uuid<br><br> pcre<br><br> perl5.<span class="hljs-number">26</span><br><br> python27<br><br> python2_select<br><br> python_select<br><br> readline<br><br> sqlite3<br><br> <span class="hljs-keyword">xorg-libX11</span><br><span class="hljs-keyword"></span><br> <span class="hljs-keyword">xorg-libXau</span><br><span class="hljs-keyword"></span><br> <span class="hljs-keyword">xorg-libXdmcp</span><br><span class="hljs-keyword"></span><br> <span class="hljs-keyword">xorg-libXext</span><br><span class="hljs-keyword"></span><br> <span class="hljs-keyword">xorg-libpthread-stubs</span><br><span class="hljs-keyword"></span><br> <span class="hljs-keyword">xorg-libxcb</span><br><span class="hljs-keyword"></span><br> <span class="hljs-keyword">xorg-xcb-proto</span><br><span class="hljs-keyword"></span><br> <span class="hljs-keyword">xorg-xcb-util</span><br><span class="hljs-keyword"></span><br> <span class="hljs-keyword">xorg-xorgproto</span><br><span class="hljs-keyword"></span><br> xrender<br><br> xz<br><br> zlib<br></code></pre></td></tr></table></figure>
+
+<p>   刚发现这里还是python27。。。无奈，就这样以为终于装好了Cairo。</p>
+<h4 id="基于Fink"><a href="#基于Fink" class="headerlink" title="基于Fink"></a>基于Fink</h4>   <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">sudo apt-<span class="hljs-built_in">get</span> install cairo<br></code></pre></td></tr></table></figure>
+
+<p>   因为也没有安装fink，所以没有尝试这个方法。</p>
+<h3 id="3-安装Pycairo"><a href="#3-安装Pycairo" class="headerlink" title="3. 安装Pycairo"></a>3. 安装Pycairo</h3><p>到这里以为装完了Cairo，但是因为需要在python里调用，所以还需要Cairo的python绑定Pycairo。</p>
+<p>   根据igraph主页上的建议，可以在PyCairo的主页上（<a target="_blank" rel="noopener" href="https://www.cairographics.org/pycairo/%EF%BC%89%E6%89%BE%E5%88%B0%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95%EF%BC%8C%E4%B9%9F%E6%B2%A1%E6%9C%89%E6%8F%90%E4%BE%9B%E9%A2%84%E7%BC%96%E8%AF%91%E5%A5%BD%E7%9A%84%E5%AE%89%E8%A3%85%E5%8C%85%EF%BC%8C%E6%89%80%E4%BB%A5%E6%83%B3%E7%94%A8tar%E5%8C%85%E7%9A%84%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%EF%BC%8C%E4%B8%8B%E8%BD%BD%E4%BA%86%E6%96%87%E4%BB%B6pycairo-1.18.0.tar.gz%EF%BC%8C%E8%A7%A3%E5%8E%8B%E4%B9%8B%E5%90%8E%E9%87%8C%E9%9D%A2%E6%9C%89%E4%B8%80%E4%B8%AAsetup.py%E6%96%87%E4%BB%B6%EF%BC%8C%E4%BD%86%E6%98%AF%E4%B8%8D%E7%9F%A5%E9%81%93%E5%85%B7%E4%BD%93%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%82%E6%95%B0%E3%80%82%E3%80%82%E3%80%82make%E5%95%A5%E7%9A%84%E4%B9%9F%E4%B8%8D%E8%A1%8C%E3%80%82%E3%80%82%E3%80%82%E5%90%8E%E6%9D%A5%E4%B8%8D%E7%9F%A5%E9%81%93%E5%9C%A8%E5%93%AA%E7%9C%8B%E7%9A%84%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E9%80%9A%E8%BF%87easy_install%E5%AE%89%E8%A3%85%EF%BC%8C">https://www.cairographics.org/pycairo/）找到安装方法，也没有提供预编译好的安装包，所以想用tar包的方式安装，下载了文件pycairo-1.18.0.tar.gz，解压之后里面有一个setup.py文件，但是不知道具体的安装参数。。。make啥的也不行。。。后来不知道在哪看的可以直接通过easy_install安装，</a></p>
+   <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">easy_install pycairo</span><br></code></pre></td></tr></table></figure>
+
+<p>   这个的过程其实还是自动下载.tar.gz包，然后安装，但是不出意外地又报错了：</p>
+   <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs awk">Searching <span class="hljs-keyword">for</span> pycairo<br><br>Reading https:<span class="hljs-regexp">//</span>pypi.org<span class="hljs-regexp">/simple/</span>pycairo/<br><br>Downloading https:<span class="hljs-regexp">//</span>files.pythonhosted.org<span class="hljs-regexp">/packages/</span>a6<span class="hljs-regexp">/54/</span><span class="hljs-number">23</span>d6cf3e8d8f1eb30e0e58f171b6f62b2ea75c024935492373639a1a08e4/pycairo-<span class="hljs-number">1.18</span>.<span class="hljs-number">0</span>.tar.gz<span class="hljs-comment">#sha256=abd42a4c9c2069febb4c38fe74bfc4b4a9d3a89fea3bc2e4ba7baff7a20f783f</span><br><br>Best match: pycairo <span class="hljs-number">1.18</span>.<span class="hljs-number">0</span><br><br>Processing pycairo-<span class="hljs-number">1.18</span>.<span class="hljs-number">0</span>.tar.gz<br><br>Writing <span class="hljs-regexp">/var/</span>folders<span class="hljs-regexp">/lh/</span><span class="hljs-number">14</span>hpyxpn0ps32ltr2b8cz8w80000gn<span class="hljs-regexp">/T/</span>easy_install-w_x2q5nz<span class="hljs-regexp">/pycairo-1.18.0/</span>setup.cfg<br><br>Running pycairo-<span class="hljs-number">1.18</span>.<span class="hljs-number">0</span><span class="hljs-regexp">/setup.py -q bdist_egg --dist-dir /</span>var<span class="hljs-regexp">/folders/</span>lh<span class="hljs-regexp">/14hpyxpn0ps32ltr2b8cz8w80000gn/</span>T<span class="hljs-regexp">/easy_install-w_x2q5nz/</span>pycairo-<span class="hljs-number">1.18</span>.<span class="hljs-number">0</span>/egg-dist-tmp-rz1_9p9j<br><br>no previously-included directories found matching <span class="hljs-string">&#x27;docs/_build&#x27;</span><br><br>warning: no files found matching <span class="hljs-string">&#x27;README&#x27;</span> under directory <span class="hljs-string">&#x27;tests&#x27;</span><br><br>warning: no files found matching <span class="hljs-string">&#x27;README&#x27;</span> under directory <span class="hljs-string">&#x27;examples&#x27;</span><br><br>error: Setup script exited with <span class="hljs-string">&#x27;pkg-config&#x27;</span> not found.<br><br>Command [<span class="hljs-string">&#x27;pkg-config&#x27;</span>, <span class="hljs-string">&#x27;--print-errors&#x27;</span>, <span class="hljs-string">&#x27;--exists&#x27;</span>, <span class="hljs-string">&#x27;cairo &gt;= 1.13.1&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+<p>   但是在这里面可以看到执行setup.py的相关参数，所以又去自己下载的包里直接执行了一次，结果还是一样的报错：</p>
+   <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">no</span> previously-included directories <span class="hljs-built_in">found</span> matching <span class="hljs-string">&#x27;docs/_build&#x27;</span><br><br><span class="hljs-built_in">warning</span>: <span class="hljs-keyword">no</span> files <span class="hljs-built_in">found</span> matching <span class="hljs-string">&#x27;README&#x27;</span> under directory <span class="hljs-string">&#x27;tests&#x27;</span><br><br><span class="hljs-built_in">warning</span>: <span class="hljs-keyword">no</span> files <span class="hljs-built_in">found</span> matching <span class="hljs-string">&#x27;README&#x27;</span> under directory <span class="hljs-string">&#x27;examples&#x27;</span><br><br><span class="hljs-string">&#x27;pkg-config&#x27;</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">found</span>.<br><br>Command [<span class="hljs-string">&#x27;pkg-config&#x27;</span>, <span class="hljs-string">&#x27;--print-errors&#x27;</span>, <span class="hljs-string">&#x27;--exists&#x27;</span>, <span class="hljs-string">&#x27;cairo &gt;= 1.13.1&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+<p>   大概应该是缺少了pkg-config这个依赖？</p>
+<p>   后来又看到可以直接用pip命令安装pycairo，但是不出意外地又出错了（心态崩溃），</p>
+<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs node-repl">pip install pycairo<br><br><span class="hljs-meta prompt_">...</span><br>&#x27;pkg-config&#x27; not found<br><span class="hljs-meta prompt_">...</span><br>Failed building wheel for pycairo<br><span class="hljs-meta prompt_">...</span><br></code></pre></td></tr></table></figure>
+
+<p>   似乎还是在说缺少pkg-config，于是又用homebrew装这个包：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">brew </span><span class="hljs-keyword">install </span>pkg-<span class="hljs-built_in">config</span><br></code></pre></td></tr></table></figure>
+
+<p>   然后再尝试安装cairo，结果又报错了：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">No</span> package <span class="hljs-string">&#x27;cairo&#x27;</span> <span class="hljs-built_in">found</span><br></code></pre></td></tr></table></figure>
+
+<p>   说找不到cairo…然后几乎就放弃了这种方法。</p>
+<p>   上面的过程基本上是基于igraph官方网站的建议，因为后面pycairo的安装没有说的很详细，到最后也没有成功，所以就感觉踩了一路坑。大概就是cairo主页上的安装方式不太靠谱，得使用pycairo上的安装方式。</p>
+<p>后来直接在pycairo的主页上（<a target="_blank" rel="noopener" href="https://pycairo.readthedocs.io/en/latest/getting_started.html%EF%BC%89%E6%89%BE%E5%88%B0%E4%BA%86%E7%89%B9%E5%88%AB%E7%AE%80%E5%8D%95%E7%9A%84%E6%96%B9%E6%B3%95%E3%80%82%E3%80%82%E3%80%82%E5%A6%82%E4%B8%8B%E3%80%82%E3%80%82%E3%80%82">https://pycairo.readthedocs.io/en/latest/getting_started.html）找到了特别简单的方法。。。如下。。。</a></p>
+<h2 id="正确步骤"><a href="#正确步骤" class="headerlink" title="正确步骤"></a>正确步骤</h2><h3 id="1-安装python-igraph-1"><a href="#1-安装python-igraph-1" class="headerlink" title="1. 安装python-igraph"></a>1. 安装python-igraph</h3><p>直接用pip命令安装</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> python-igraph<br></code></pre></td></tr></table></figure>
+
+<p>安装后可以在终端里import测试一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> igraph.test<br><span class="hljs-meta">&gt;&gt;&gt; </span>igraph.test.run_tests()<br></code></pre></td></tr></table></figure>
+
+<p>也可以查看一下安装的版本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> igraph<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span> igraph.__version<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-安装Cairo-1"><a href="#2-安装Cairo-1" class="headerlink" title="2. 安装Cairo"></a>2. 安装Cairo</h3><p>要实现可视化，还需要借助Cairo库。</p>
+<p>利用Homebrew在Mac OS上进行安装：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">brew </span><span class="hljs-keyword">install </span>cairo pkg-<span class="hljs-built_in">config</span><br></code></pre></td></tr></table></figure>
+
+<p>其它平台的安装参见<a target="_blank" rel="noopener" href="https://pycairo.readthedocs.io/en/latest/getting_started.html">https://pycairo.readthedocs.io/en/latest/getting_started.html</a></p>
+<h3 id="3-安装Pycairo-1"><a href="#3-安装Pycairo-1" class="headerlink" title="3. 安装Pycairo"></a>3. 安装Pycairo</h3><p>除了Cairo库之外，因为需要在python里调用，所以还需要Cairo的python绑定Pycairo。</p>
+<p>实际上现在只需要pip命令即可，这里的最新版本为pycairo-1.18.0</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip3 <span class="hljs-keyword">install</span> pycairo<br></code></pre></td></tr></table></figure>
+
+
+
+<p>这样就可以正常利用igraph和Cairo库画图啦，igraph主页（<a target="_blank" rel="noopener" href="https://igraph.org/python/doc/tutorial/tutorial.html%EF%BC%89%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%80%E4%BA%9B%E6%95%99%E7%A8%8B%E4%BE%9B%E5%8F%82%E8%80%83%E3%80%82">https://igraph.org/python/doc/tutorial/tutorial.html）提供了一些教程供参考。</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://igraph.org/python/doc/tutorial/install.html#installing-igraph">igraph主页安装建议</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.macports.org/install.php">MacPorts主页port安装方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cairographics.org/pycairo/">cairo主页上的pycairo安装建议</a></p>
+<p><a target="_blank" rel="noopener" href="https://pycairo.readthedocs.io/en/latest/getting_started.html">pycairo主页的安装建议</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liuhuan323/article/details/78936781">作图代码来源</a></p>
+<p><a target="_blank" rel="noopener" href="https://igraph.org/python/doc/tutorial/tutorial.html">igraph主页作图教程</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/igraph/">#igraph</a>
+      
+        <a href="/tags/cairo/">#cairo</a>
+      
+        <a href="/tags/pycairo/">#pycairo</a>
+      
+        <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">#可视化</a>
+      
+        <a href="/tags/%E7%A4%BE%E5%8C%BA%E5%8F%91%E7%8E%B0/">#社区发现</a>
+      
+        <a href="/tags/python/">#python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Mac OS：Python-igraph &amp; Cairo &amp; Pycairo安装踩坑历程</div>
+      <div>http://example.com/2019/02/20/2019-02-20-Mac OS：Python-igraph &amp; Cairo &amp; Pycairo安装踩坑历程/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LELE</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2019年2月20日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/05/13/2019-05-13-Mac%20OS%EF%BC%9AC++%20IDE%20&amp;%20OpenCV2%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" title="Mac OS：C++ IDE &amp; OpenCV2安装配置">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Mac OS：C++ IDE &amp; OpenCV2安装配置</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/10/29/2018-10-29-%E5%8D%95%E6%9C%BA%EF%BC%88%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%EF%BC%89Hadoop%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E8%B8%A9%E5%9D%91%E5%8E%86%E7%A8%8B/" title="单机（伪分布式）Hadoop系统安装踩坑历程">
+                        <span class="hidden-mobile">单机（伪分布式）Hadoop系统安装踩坑历程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
